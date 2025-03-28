@@ -102,7 +102,7 @@ config vpn ipsec phase1-interface
     next
 end
 
-####Phase 2 Configuration
+#### Phase 2 Configuration
 
 The Phase 2 configuration secures the data transmission once the tunnel is established. It defines the encryption protocols, key lifetime, and other security parameters for protecting the data flow.
 
