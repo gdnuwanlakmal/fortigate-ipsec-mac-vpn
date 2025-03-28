@@ -101,3 +101,39 @@ config vpn ipsec phase1-interface
         set dpd-retryinterval 20
     next
 end
+
+####Phase 2 Configuration
+
+The Phase 2 configuration secures the data transmission once the tunnel is established. It defines the encryption protocols, key lifetime, and other security parameters for protecting the data flow.
+
+```plaintext
+config vpn ipsec phase2-interface
+    edit "ipsec-macshare"
+        set phase1name "ipsec-macshare"
+        set proposal aes128-sha1 aes256-sha1 aes128-sha256 aes256-sha256 aes128gcm aes256gcm chacha20poly1305
+        set pfs enable
+        set ipv4-df disable
+        set dhgrp 14 5
+        set replay enable
+        set keepalive disable
+        set add-route phase1
+        set inbound-dscp-copy phase1
+        set auto-discovery-sender phase1
+        set auto-discovery-forwarder phase1
+        set keylife-type seconds
+        set single-source disable
+        set route-overlap use-new
+        set encapsulation tunnel-mode
+        set comments "VPN: ipsec-macshare (Created by VPN wizard)"
+        set diffserv disable
+        set protocol 0
+        set src-addr-type subnet
+        set src-port 0
+        set dst-addr-type subnet
+        set dst-port 0
+        set keylifeseconds 43200
+        set src-subnet 0.0.0.0 0.0.0.0
+        set dst-subnet 0.0.0.0 0.0.0.0
+    next
+end
+
