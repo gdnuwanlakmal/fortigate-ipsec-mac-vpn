@@ -1,4 +1,4 @@
-# mac-ipsec-vpn-configuration
+# IPSec Configuration for Mac Devices
 
 This repository contains the configuration files for setting up an IPSec VPN tunnel for Mac devices using FortiGate. The configuration is designed to establish a secure communication channel between a FortiGate device and remote MacOS clients via IPSec VPN, utilizing a pre-shared key (PSK) for authentication and advanced encryption methods to secure the data.
 
