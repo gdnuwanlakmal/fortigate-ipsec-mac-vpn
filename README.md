@@ -136,32 +136,35 @@ config vpn ipsec phase2-interface
 end
 ```
 
-Key Parameters Explained
-Phase 1 Parameters
-authmethod psk: Uses a pre-shared key (PSK) for authentication.
+## Key Parameters Explained
 
-proposal aes128-sha256 aes256-sha256: Specifies encryption algorithms for Phase 1.
+### Phase 1 Parameters
+1. authmethod psk: Uses a pre-shared key (PSK) for authentication.
 
-mode aggressive: Aggressive mode for faster negotiation.
+2. proposal aes128-sha256 aes256-sha256: Specifies encryption algorithms for Phase 1.
 
-keylife 86400: Key lifetime set to 24 hours.
+3. mode aggressive: Aggressive mode for faster negotiation.
 
-Phase 2 Parameters
-proposal aes128-sha256 aes256-sha256: Specifies encryption algorithms for Phase 2.
+4. keylife 86400: Key lifetime set to 24 hours.
 
-pfs enable: Perfect Forward Secrecy (PFS) is enabled for enhanced security.
+### Phase 2 Parameters
 
-keylifeseconds 43200: Key lifetime set to 12 hours.
+1. proposal aes128-sha256 aes256-sha256: Specifies encryption algorithms for Phase 2.
 
-Usage
-Upload Configuration: Copy the Phase 1 and Phase 2 configurations into your FortiGate device's configuration interface.
+2. pfs enable: Perfect Forward Secrecy (PFS) is enabled for enhanced security.
 
-Modify IP Addressing: Ensure the IP range (192.168.186.1 - 192.168.186.10) aligns with your network's addressing plan.
+3. keylifeseconds 43200: Key lifetime set to 12 hours.
 
-Set PSK: Replace PresharedKey with your chosen pre-shared key.
+### Usage
 
-Modify User Group: Ensure the mac-users user group is configured to match your VPN users.
+*  Upload Configuration: Copy the Phase 1 and Phase 2 configurations into your FortiGate device's configuration interface.
 
-Connect Mac Device: Test the connection by connecting a Mac device using FortiClient or a compatible VPN client.
+*  Modify IP Addressing: Ensure the IP range (192.168.186.1 - 192.168.186.10) aligns with your network's addressing plan.
+
+*  Set PSK: Replace PresharedKey with your chosen pre-shared key.
+
+*  Modify User Group: Ensure the mac-users user group is configured to match your VPN users.
+
+*  Connect Mac Device: Test the connection by connecting a Mac device using FortiClient or a compatible VPN client.
 
 
