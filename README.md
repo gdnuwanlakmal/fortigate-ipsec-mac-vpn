@@ -137,3 +137,30 @@ config vpn ipsec phase2-interface
     next
 end
 
+Key Parameters Explained
+Phase 1 Parameters
+authmethod psk: Uses a pre-shared key (PSK) for authentication.
+
+proposal aes128-sha256 aes256-sha256: Specifies encryption algorithms to be used for Phase 1.
+
+mode aggressive: Aggressive mode is used to speed up the negotiation process.
+
+keylife 86400: Sets the key lifetime to 24 hours.
+
+Phase 2 Parameters
+proposal aes128-sha256 aes256-sha256: Specifies the encryption algorithms to be used for Phase 2.
+
+pfs enable: Perfect Forward Secrecy (PFS) is enabled for enhanced security.
+
+keylifeseconds 43200: Sets the key lifetime to 12 hours.
+
+Usage
+Upload Configuration: Copy the Phase 1 and Phase 2 configurations into your FortiGate device's configuration interface.
+
+Modify IP Addressing: Ensure that the IP range (192.168.186.1 - 192.168.186.10) aligns with your network's addressing plan.
+
+Set PSK: Replace PresharedKey with your chosen pre-shared key.
+
+Modify User Group: Ensure the mac-users user group is configured to match your VPN users.
+
+Connect Mac Device: Test the connection by connecting a Mac device using FortiClient or a compatible VPN client.
