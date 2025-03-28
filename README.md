@@ -18,7 +18,7 @@ This configuration defines the following settings:
 
 The Phase 1 configuration establishes the initial secure communication between the FortiGate device and the Mac VPN client. It includes settings for authentication, encryption, and key exchange.
 
-```plaintext
+```shell
 config vpn ipsec phase1-interface
     edit "ipsec-macshare"
         set type dynamic
@@ -101,7 +101,10 @@ config vpn ipsec phase1-interface
         set dpd-retryinterval 20
     next
 end
+```
+### Phase 1 Configuration
 
+```shell
 config vpn ipsec phase2-interface
     edit "ipsec-macshare"
         set phase1name "ipsec-macshare"
@@ -131,51 +134,34 @@ config vpn ipsec phase2-interface
         set dst-subnet 0.0.0.0 0.0.0.0
     next
 end
+```
 
-### Key Parameters Explained
+Key Parameters Explained
+Phase 1 Parameters
+authmethod psk: Uses a pre-shared key (PSK) for authentication.
 
-#### Phase 1 Parameters
+proposal aes128-sha256 aes256-sha256: Specifies encryption algorithms for Phase 1.
 
-- **authmethod psk**:  
-  Uses a pre-shared key (PSK) for authentication.
+mode aggressive: Aggressive mode for faster negotiation.
 
-- **proposal aes128-sha256 aes256-sha256**:  
-  Specifies encryption algorithms for Phase 1.
+keylife 86400: Key lifetime set to 24 hours.
 
-- **mode aggressive**:  
-  Aggressive mode for faster negotiation.
+Phase 2 Parameters
+proposal aes128-sha256 aes256-sha256: Specifies encryption algorithms for Phase 2.
 
-- **keylife 86400**:  
-  Key lifetime set to 24 hours.
+pfs enable: Perfect Forward Secrecy (PFS) is enabled for enhanced security.
 
-#### Phase 2 Parameters
+keylifeseconds 43200: Key lifetime set to 12 hours.
 
-- **proposal aes128-sha256 aes256-sha256**:  
-  Specifies encryption algorithms for Phase 2.
+Usage
+Upload Configuration: Copy the Phase 1 and Phase 2 configurations into your FortiGate device's configuration interface.
 
-- **pfs enable**:  
-  Perfect Forward Secrecy (PFS) is enabled for enhanced security.
+Modify IP Addressing: Ensure the IP range (192.168.186.1 - 192.168.186.10) aligns with your network's addressing plan.
 
-- **keylifeseconds 43200**:  
-  Key lifetime set to 12 hours.
+Set PSK: Replace PresharedKey with your chosen pre-shared key.
 
----
+Modify User Group: Ensure the mac-users user group is configured to match your VPN users.
 
-### Usage
-
-1. **Upload Configuration**:  
-   Copy the Phase 1 and Phase 2 configurations into your FortiGate device's configuration interface.
-
-2. **Modify IP Addressing**:  
-   Ensure the IP range (`192.168.186.1 - 192.168.186.10`) aligns with your network's addressing plan.
-
-3. **Set PSK**:  
-   Replace `PresharedKey` with your chosen pre-shared key.
-
-4. **Modify User Group**:  
-   Ensure the `mac-users` user group is configured to match your VPN users.
-
-5. **Connect Mac Device**:  
-   Test the connection by connecting a Mac device using FortiClient or a compatible VPN client.
+Connect Mac Device: Test the connection by connecting a Mac device using FortiClient or a compatible VPN client.
 
 
